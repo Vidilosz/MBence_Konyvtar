@@ -13,10 +13,10 @@ namespace konyvtar
 		private int pageCount;
 		private int releaseYear;
 
-		public string Title { get => title; set => title = value; }
-		public string Author { get => author; set => author = value; }
-		public int PageCount { get => pageCount; set => pageCount = value; }
-		public int ReleaseYear { get => releaseYear; set => releaseYear = value; }
+		public string Title { get => title; }
+		public string Author { get => author; }
+		public int PageCount { get => pageCount; }
+		public int ReleaseYear { get => releaseYear; }
 
 		public Book(string title, string author, int pageCount, int releaseYear)
 		{
@@ -26,12 +26,12 @@ namespace konyvtar
 			this.releaseYear = releaseYear;
 		}
 
-		public string GetBookByTitle(Book[])
-		{
+        public static Book GetBookByTitle(Book[] books, string title)
+        {
+            return books.FirstOrDefault(book => book.Title.Equals(title, StringComparison.OrdinalIgnoreCase));
+        }
 
-		}
-
-		public void EditBookData()
+        public void EditBookData()
 		{
             Console.WriteLine("Title: ");
 			title =Console.ReadLine();
